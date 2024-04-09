@@ -1,20 +1,28 @@
 import React from 'react'
 import {Button, Input} from '@nextui-org/react'
 import { useState } from 'react';
+import { toast } from 'sonner';
+
 export const LoginForm = () => {
   const [errorMessage, setErrorMessage] = useState('');
-  const handleSubmit = (e) =>{
+  
+  const [isLoading, setIsLoading] = useState(false) 
+  
+  const handleSubmit = async (e) =>{
     e.preventDefault();
+    setIsLoading(true)
     const form = e.target; 
     const username = form.elements['email'].value; 
     const password = form.elements['password'].value; 
 
     if(username.trim() == ''  || password.trim() ==''){
-      setErrorMessage('Por favor, ingresa un nombre de usuario y contraseña válidos.'); 
+      toast.error('Todos los campos son obligatorios')
+      setIsLoading(false)
       return;
 
     }
     //Store del Auth
+    setIsLoading(false)
     console.log("Autenticando")
 
     
@@ -39,6 +47,7 @@ export const LoginForm = () => {
             label="Contrasena"
           />
           <Button
+            isLoading= {isLoading}
             type='submit'
             fullWidth
             className='btn-primary'
