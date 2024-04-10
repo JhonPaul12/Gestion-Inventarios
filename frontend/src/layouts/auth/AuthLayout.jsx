@@ -7,7 +7,7 @@ export const AuthLayout = () => {
   return (
     <>
       <Toaster
-        position='top-center'
+        position='top-right'
         richColors
         closeButton
         style={{

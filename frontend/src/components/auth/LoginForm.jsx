@@ -4,8 +4,6 @@ import { useState } from 'react';
 import { toast } from 'sonner';
 
 export const LoginForm = () => {
-  const [errorMessage, setErrorMessage] = useState('');
-  
   const [isLoading, setIsLoading] = useState(false) 
   
   const handleSubmit = async (e) =>{
@@ -54,7 +52,6 @@ export const LoginForm = () => {
           >Inicio Sesion</Button>
 
         </form>
-        {errorMessage && <p>{errorMessage}</p>}
       </div>
   )
 }
